@@ -84,6 +84,32 @@ zeppelin_erc20_files:=totalSupply-spec.k \
              transferFrom-failure-1-b-spec.k \
              transferFrom-failure-2-spec.k
 
+zilliqa_erc20_files:=totalSupply-spec.k \
+             balanceOf-spec.k \
+             allowance-spec.k \
+             approve-success-1-spec.k \
+             approve-success-2-spec.k \
+             transfer-success-1-spec.k \
+             transfer-success-2-spec.k \
+             transfer-failure-1-a-spec.k \
+             transfer-failure-1-b-spec.k \
+             transfer-failure-2-spec.k \
+             transferFrom-success-1-spec.k \
+             transferFrom-success-2-spec.k \
+             transferFrom-failure-1-a-spec.k \
+             transferFrom-failure-1-b-spec.k \
+             transferFrom-failure-2-spec.k
+
+zrx_erc20_files:=totalSupply-spec.k \
+             balanceOf-spec.k \
+             allowance-spec.k \
+             approve-spec.k \
+             transfer-success-spec.k \
+             transfer-failure-spec.k \
+             transferFrom-success-1-spec.k \
+             transferFrom-success-2-spec.k \
+             transferFrom-failure-spec.k
+
 hobby_erc20_files:=totalSupply-spec.k \
                    balanceOf-spec.k \
                    allowance-spec.k \
@@ -120,48 +146,95 @@ ds_token_erc20_files:=totalSupply-spec.k \
                    transferFrom-failure-2-b-spec.k \
                    transferFrom-failure-2-c-spec.k
 
+tron_erc20_files:=totalSupply-spec.k \
+                   balanceOf-spec.k \
+                   allowance-spec.k \
+                   approve-success-spec.k \
+                   approve-failure-a-spec.k \
+                   approve-failure-b-spec.k \
+                   approve-failure-c-spec.k \
+                   transfer-success-1-spec.k \
+                   transfer-success-2-spec.k \
+                   transfer-failure-1-a-spec.k \
+                   transfer-failure-1-b-spec.k \
+                   transfer-failure-1-c-spec.k \
+                   transfer-failure-1-d-spec.k \
+                   transfer-failure-2-a-spec.k \
+                   transfer-failure-2-b-spec.k \
+                   transfer-failure-2-c-spec.k \
+                   transferFrom-success-1-spec.k \
+                   transferFrom-success-2-spec.k \
+                   transferFrom-failure-1-a-spec.k \
+                   transferFrom-failure-1-b-spec.k \
+                   transferFrom-failure-1-c-spec.k \
+                   transferFrom-failure-1-d-spec.k \
+                   transferFrom-failure-1-e-spec.k \
+                   transferFrom-failure-2-a-spec.k \
+                   transferFrom-failure-2-b-spec.k \
+                   transferFrom-failure-2-c-spec.k \
+                   transferFrom-failure-2-d-spec.k
+
+
+icon_erc20_files:=totalSupply-spec.k \
+                   balanceOf-spec.k \
+                   allowance-spec.k \
+                   approve-success-spec.k \
+                   approve-failure-a-spec.k \
+                   approve-failure-b-spec.k \
+                   approve-failure-c-spec.k \
+                   transfer-success-1-spec.k \
+                   transfer-success-2-spec.k \
+                   transfer-failure-1-a-spec.k \
+                   transfer-failure-1-b-spec.k \
+                   transfer-failure-1-c-spec.k \
+                   transfer-failure-1-d-spec.k \
+                   transfer-failure-2-a-spec.k \
+                   transfer-failure-2-b-spec.k \
+                   transfer-failure-2-c-spec.k \
+                   transferFrom-success-1-spec.k \
+                   transferFrom-success-2-spec.k \
+                   transferFrom-failure-1-a-spec.k \
+                   transferFrom-failure-1-b-spec.k \
+                   transferFrom-failure-1-c-spec.k \
+                   transferFrom-failure-1-d-spec.k \
+                   transferFrom-failure-1-e-spec.k \
+                   transferFrom-failure-2-a-spec.k \
+                   transferFrom-failure-2-b-spec.k \
+                   transferFrom-failure-2-c-spec.k \
+                   transferFrom-failure-2-d-spec.k
+
 casper_files:=recommended_target_hash-spec.k \
               proc_reward-spec.k \
               vote-spec.k \
               delete_validator-spec.k
 
-proof_tests:= bihu vyper-erc20 zeppelin-erc20 hkg-erc20 hobby-erc20 sum-to-n ds-token-erc20 casper
+general_files:=totalSupply-spec.k \
+             balanceOf-spec.k \
+             allowance-spec.k \
+             approve-spec.k \
+             transfer-spec.k \
+			 transferFrom-spec.k
+
+proof_tests:= vyper-erc20 zeppelin-erc20 hobby-erc20 ds-token-erc20 tron_erc20 icon_erc20 zrx_erc20 zilliqa_erc20
 
 
 split-proof-tests: $(proof_tests)
-
-bihu: $(patsubst %, $(specs_dir)/bihu/%, $(bihu_collectToken_file)) $(patsubst %, $(specs_dir)/bihu/%, $(bihu_forwardToHotWallet_files)) $(specs_dir)/lemmas.k
 
 vyper-erc20: $(patsubst %, $(specs_dir)/vyper-erc20/%, $(erc20_files)) $(specs_dir)/lemmas.k
 
 zeppelin-erc20: $(patsubst %, $(specs_dir)/zeppelin-erc20/%, $(zeppelin_erc20_files)) $(specs_dir)/lemmas.k
 
-hkg-erc20: $(patsubst %, $(specs_dir)/hkg-erc20/%, $(erc20_files)) $(specs_dir)/lemmas.k
-
 hobby-erc20: $(patsubst %, $(specs_dir)/hobby-erc20/%, $(hobby_erc20_files)) $(specs_dir)/lemmas.k
-
-sum-to-n: $(specs_dir)/examples/sum-to-n-spec.k $(specs_dir)/lemmas.k
 
 ds-token-erc20: $(patsubst %, $(specs_dir)/ds-token-erc20/%, $(ds_token_erc20_files)) $(specs_dir)/lemmas.k
 
-casper: $(patsubst %, $(specs_dir)/casper/%, $(casper_files)) $(specs_dir)/lemmas.k
+tron_erc20: $(patsubst %, $(specs_dir)/tron_erc20/%, $(tron_erc20_files)) $(specs_dir)/lemmas.k
 
-# Bihu
-bihu_tmpls:=bihu/module-tmpl.k bihu/spec-tmpl.k
+icon_erc20: $(patsubst %, $(specs_dir)/icon_erc20/%, $(icon_erc20_files)) $(specs_dir)/lemmas.k
 
-$(specs_dir)/bihu/collectToken-spec.k: $(bihu_tmpls) bihu/collectToken-spec.ini
-	@echo >&2 "==  gen-spec: $@"
-	mkdir -p $(dir $@)
-	python3 resources/gen-spec.py $^ collectToken collectToken loop ds-math-mul > $@
-	cp bihu/abstract-semantics.k $(dir $@)
-	cp bihu/verification.k $(dir $@)
+zrx_erc20: $(patsubst %, $(specs_dir)/zrx_erc20/%, $(zrx_erc20_files)) $(specs_dir)/lemmas.k
 
-$(specs_dir)/bihu/forwardToHotWallet%-spec.k: $(bihu_tmpls) bihu/forwardToHotWallet-spec.ini
-	@echo >&2 "==  gen-spec: $@"
-	mkdir -p $(dir $@)
-	python3 resources/gen-spec.py $^ $(addsuffix $*, forwardToHotWallet) $(addsuffix $*, forwardToHotWallet) > $@
-	cp bihu/abstract-semantics.k $(dir $@)
-	cp bihu/verification.k $(dir $@)
+zilliqa_erc20: $(patsubst %, $(specs_dir)/zilliqa_erc20/%, $(zilliqa_erc20_files)) $(specs_dir)/lemmas.k
 
 # ERC20
 erc20_tmpls:=erc20/module-tmpl.k erc20/spec-tmpl.k
@@ -174,13 +247,6 @@ $(specs_dir)/vyper-erc20/%-spec.k: $(erc20_tmpls) erc20/vyper/vyper-erc20-spec.i
 	cp erc20/verification.k $(dir $@)
 
 $(specs_dir)/zeppelin-erc20/%-spec.k: $(erc20_tmpls) erc20/zeppelin/zeppelin-erc20-spec.ini
-	@echo >&2 "==  gen-spec: $@"
-	mkdir -p $(dir $@)
-	python3 resources/gen-spec.py $^ $* $* > $@
-	cp erc20/abstract-semantics.k $(dir $@)
-	cp erc20/verification.k $(dir $@)
-
-$(specs_dir)/hkg-erc20/%-spec.k: $(erc20_tmpls) erc20/hkg/hkg-erc20-spec.ini
 	@echo >&2 "==  gen-spec: $@"
 	mkdir -p $(dir $@)
 	python3 resources/gen-spec.py $^ $* $* > $@
@@ -201,43 +267,33 @@ $(specs_dir)/ds-token-erc20/%-spec.k: erc20/module-tmpl.k erc20/spec-tmpl.k erc2
 	cp erc20/abstract-semantics.k $(dir $@)
 	cp erc20/verification.k $(dir $@)
 
-# Sum to N
-$(specs_dir)/examples/sum-to-n-spec.k: resources/sum-to-n.md $(TANGLER)
-	@echo "==  tangle: $@"
-	mkdir -p $(dir $@)
-	pandoc --from markdown --to "$(TANGLER)" --metadata="code:.sum-to-n" $< > $@
-
-# Casper
-casper_tmpls:=casper/module-tmpl.k casper/spec-tmpl.k
-
-$(specs_dir)/casper/recommended_target_hash-spec.k: $(casper_tmpls) casper/casper-spec.ini
+$(specs_dir)/tron_erc20/%-spec.k: $(erc20_tmpls) erc20/tron/tron-erc20-spec.ini
 	@echo >&2 "==  gen-spec: $@"
 	mkdir -p $(dir $@)
-	python3 resources/gen-spec.py $^ recommended_target_hash recommended_target_hash > $@
-	cp casper/abstract-semantics.k $(dir $@)
-	cp casper/verification.k $(dir $@)
+	python3 resources/gen-spec.py $^ $* $* > $@
+	cp erc20/abstract-semantics.k $(dir $@)
+	cp erc20/verification.k $(dir $@)
 
-$(specs_dir)/casper/proc_reward-spec.k: $(casper_tmpls) casper/casper-spec.ini
+$(specs_dir)/icon_erc20/%-spec.k: $(erc20_tmpls) erc20/icon/icon-erc20-spec.ini
 	@echo >&2 "==  gen-spec: $@"
 	mkdir -p $(dir $@)
-	python3 resources/gen-spec.py $^ proc_reward proc_reward > $@
-	cp casper/abstract-semantics.k $(dir $@)
-	cp casper/verification.k $(dir $@)
+	python3 resources/gen-spec.py $^ $* $* > $@
+	cp erc20/abstract-semantics.k $(dir $@)
+	cp erc20/verification.k $(dir $@)
 
-$(specs_dir)/casper/vote-spec.k: $(casper_tmpls) casper/casper-spec.ini
+$(specs_dir)/zrx_erc20/%-spec.k: $(erc20_tmpls) erc20/zrx/zrx-erc20-spec.ini
 	@echo >&2 "==  gen-spec: $@"
 	mkdir -p $(dir $@)
-	python3 resources/gen-spec.py $^ vote recommended_target_hash vote > $@
-	cp casper/abstract-semantics.k $(dir $@)
-	cp casper/verification.k $(dir $@)
+	python3 resources/gen-spec.py $^ $* $* > $@
+	cp erc20/abstract-semantics.k $(dir $@)
+	cp erc20/verification.k $(dir $@)
 
-$(specs_dir)/casper/delete_validator-spec.k: $(casper_tmpls) casper/casper-spec.ini
+$(specs_dir)/zilliqa_erc20/%-spec.k: $(erc20_tmpls) erc20/zilliqa/zilliqa-erc20-spec.ini
 	@echo >&2 "==  gen-spec: $@"
 	mkdir -p $(dir $@)
-	python3 resources/gen-spec.py $^ delete_validator delete_validator > $@
-	cp casper/abstract-semantics.k $(dir $@)
-	cp casper/verification.k $(dir $@)
-
+	python3 resources/gen-spec.py $^ $* $* > $@
+	cp erc20/abstract-semantics.k $(dir $@)
+	cp erc20/verification.k $(dir $@)
 # Testing
 # -------
 
